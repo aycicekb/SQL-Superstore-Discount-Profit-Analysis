@@ -19,8 +19,51 @@ ORDER BY discount_frqncy desc
 ```
 
 - **Average profit margin:** The average of individual transaction profit margins.
+
+``` sql
+WITH profit_margin_table AS (
+    SELECT
+        ROUND(discount * 100) as discount,
+        CASE 
+            WHEN sales = 0 THEN NULL
+            ELSE (CAST(profit AS NUMERIC) / sales) * 100 
+        END AS profit_margin
+    FROM superstore
+)
+
+SELECT
+    discount,
+    ROUND(AVG(profit_margin), 2) as avg_profit_margin
+FROM profit_margin_table
+GROUP BY discount
+ORDER BY avg_profit_margin desc
+```
 - **Total profit:** The sum of profits generated at each discount level.
 - **Overall profit margin:** Total profit divided by total sales, multiplied by 100.
+
+``` sql
+WITH profit_margin_table AS (
+    SELECT
+        sales,
+        profit,
+        ROUND(discount * 100) as discount,
+        CASE 
+            WHEN sales = 0 THEN NULL
+            ELSE (CAST(profit AS NUMERIC) / sales) * 100 
+        END AS profit_margin
+    FROM superstore
+)
+
+SELECT 
+    discount,
+    COUNT(*) as row_count,
+    ROUND(SUM(sales), 2) as sum_sales,
+    ROUND(SUM(profit), 2) as sum_profit,
+    ROUND((CAST(SUM(profit) AS NUMERIC)) / SUM(sales) * 100, 2) as sum_profit_margin
+FROM profit_margin_table
+GROUP BY discount
+ORDER BY sum_profit desc
+```
 ## 2. Key Findings
 ### Discount Distribution
 

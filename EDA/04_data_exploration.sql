@@ -77,7 +77,7 @@ ORDER BY avg_profit_margin desc
 */
 
 
--- Comparison
+-- Exploring total profit and total profit margin
 WITH profit_margin_table AS (
     SELECT
         sales,
