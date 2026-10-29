@@ -8,6 +8,16 @@ The analysis was conducted using SQL in PostgreSQL.
 
 The following metrics were examined:
 - **Discount Frequency:** The number of transactions of each discount group
+
+``` sql
+SELECT
+   discount*100 as discount,
+    COUNT(discount) as discount_frqncy
+FROM superstore
+GROUP BY discount 
+ORDER BY discount_frqncy desc
+```
+
 - **Average profit margin:** The average of individual transaction profit margins.
 - **Total profit:** The sum of profits generated at each discount level.
 - **Overall profit margin:** Total profit divided by total sales, multiplied by 100.
