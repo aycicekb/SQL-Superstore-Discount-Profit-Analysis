@@ -67,8 +67,8 @@ These findings show an association rather than proof of causation. Other factors
 
 ## 4. Limitations
 
-Some discount groups contain relatively few transactions, so their results should be interpreted cautiously.
+- Some discount groups contain relatively few transactions, so their results should be interpreted cautiously.
 
-The analysis does not control for product categories, product costs, or other potential influencing factors.
+- The analysis does not control for product categories, product costs, or other potential influencing factors.
 
-The findings describe this dataset and may not apply to every business or sales context.
+- The findings describe this dataset and may not apply to every business or sales context.
